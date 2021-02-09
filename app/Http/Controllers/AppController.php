@@ -13,6 +13,6 @@ class AppController extends Controller
 
     public function index()
     {
-        dd('halo');
+        return view('layouts.main');
     }
 }
