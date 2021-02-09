@@ -19,4 +19,12 @@ Route::get('/', [LoginController::class, "showLoginForm"]);
 
 Auth::routes();
 
+Route::get('register', function () {
+    abort(401);
+});
+
+Route::get('password/reset', function () {
+    abort(401);
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
