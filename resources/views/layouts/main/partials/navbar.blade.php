@@ -16,7 +16,8 @@
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name">Nama </h5>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i
+                                class="fas fa-power-off mr-2"></i>Logout</a>
                     </div>
                 </li>
             </ul>

@@ -31,7 +31,7 @@ class AppController extends Controller
             "judul" => "List Surat Masuk",
             "data" => Incoming::all()
         ];
-        return view('app.surat.masuk', $data);
+        return view('app.surat.masuk.index', $data);
     }
 
     public function keluar()
@@ -40,6 +40,19 @@ class AppController extends Controller
             "judul" => "List Surat Keluar",
             "data" => Outcoming::all()
         ];
-        return view('app.surat.keluar', $data);
+        return view('app.surat.keluar.index', $data);
+    }
+
+    public function masukTambah()
+    {
+        $data = [
+            "judul" => "Tambah Surat Masuk"
+        ];
+        return view('app.surat.masuk.tambah', $data);
+    }
+
+    public function keluarTambah()
+    {
+        dd("Tambah Keluar");
     }
 }

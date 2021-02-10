@@ -12,7 +12,7 @@
                         Menu
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fa fa-fw fa-home"></i>Beranda</a>
+                        <a href="{{ url('/app') }}" class="nav-link"><i class="fa fa-fw fa-home"></i>Beranda</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
