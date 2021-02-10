@@ -21,8 +21,8 @@
                         <div id="submenu-1" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Surat Masuk</a>
-                                    <a class="nav-link" href="#">Surat Keluar</a>
+                                    <a class="nav-link" href="{{ route("surat.masuk") }}">Surat Masuk</a>
+                                    <a class="nav-link" href="{{ route("surat.keluar") }}">Surat Keluar</a>
                                 </li>
                             </ul>
                         </div>

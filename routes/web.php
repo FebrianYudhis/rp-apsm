@@ -20,3 +20,6 @@ Route::get('password/reset', function () {
 });
 
 Route::get('app', [AppController::class, "index"]);
+
+Route::get('surat/masuk', [AppController::class, "masuk"])->name("surat.masuk");
+Route::get('surat/keluar', [AppController::class, "keluar"])->name("surat.keluar");

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('fonts/circular/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/concept.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/fontawesome-all.css') }}">
+    @stack('css')
     <title>{{ $judul }}</title>
 </head>
 
@@ -38,6 +39,7 @@
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/concept.js') }}"></script>
+    @stack('js')
 </body>
 
 </html>

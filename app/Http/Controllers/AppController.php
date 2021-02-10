@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Incoming;
+use App\Models\Outcoming;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
@@ -22,5 +23,23 @@ class AppController extends Controller
             "suratKeluar" => $suratKeluar->count()
         ];
         return view('app.index', $data);
+    }
+
+    public function masuk()
+    {
+        $data = [
+            "judul" => "List Surat Masuk",
+            "data" => Incoming::all()
+        ];
+        return view('app.surat.masuk', $data);
+    }
+
+    public function keluar()
+    {
+        $data = [
+            "judul" => "List Surat Keluar",
+            "data" => Outcoming::all()
+        ];
+        return view('app.surat.keluar', $data);
     }
 }
