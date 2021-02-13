@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="dashboard-main-wrapper">
 
         @include('layouts.main.partials.navbar')

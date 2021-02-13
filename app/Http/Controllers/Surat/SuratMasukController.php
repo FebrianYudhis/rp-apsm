@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Surat;
 
-use App\Http\Controllers\Controller;
 use App\Models\Incoming;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SuratMasukController extends Controller
 {
@@ -42,7 +43,11 @@ class SuratMasukController extends Controller
         ]);
 
         if ($masukkan) {
-            dd('Berhasil');
+            Alert::success('Berhasil', 'Surat Masuk Berhasil Ditambahkan');
+            return redirect()->route('surat.masuk');
+        } else {
+            Alert::error('Gagal', 'Surat Masuk Gagal Ditambahkan');
+            return redirect()->route('surat.masuk');
         }
     }
 }
