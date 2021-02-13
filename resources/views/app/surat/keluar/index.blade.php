@@ -6,6 +6,7 @@
 
 @push('js')
 <script src="{{ asset('js/datatables.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 @endpush
 
 @push('js')
@@ -13,6 +14,25 @@
     $(document).ready( function () {
         $('#datatabel').DataTable();
     } );
+</script>
+
+<script>
+    $('.konfirmasi-hapus').click(function(event) {
+      var form =  $(this).closest("form");
+      event.preventDefault();
+      swal({
+          title: `Hapus`,
+          text: "Apakah Anda Yakin Ingin Menghapus ?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+        }
+      });
+  });
 </script>
 @endpush
 
@@ -42,7 +62,20 @@
                 <td>{{ $d['tujuan'] }}</td>
                 <td>{{ $d['perihal'] }}</td>
                 <td>{{ $d['lokasi_berkas'] }}</td>
-                <td><a href="#" class="btn btn-success">Lihat Berkas</a></td>
+                <td>
+                    <div class="row">
+                        <a href="{{ asset('storage').'/'.$d['url'] }}" target="_blank"
+                            class="btn btn-success col-md-12">Lihat
+                            Berkas</a>
+                        <a href="#" class="btn btn-primary col-md-12 mt-1">Edit</a>
+                        <form action="{{ route('keluar.hapus',[$d['id']]) }}" class="mt-1 w-100 konfirmasi-hapus"
+                            method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger w-100">Hapus</button>
+                        </form>
+                    </div>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -19,7 +19,7 @@ class SuratMasukController extends Controller
     public function store()
     {
         request()->validate([
-            'nomorAgenda' => 'required',
+            'nomorAgenda' => 'required|unique:incomings,nomor_agenda',
             'tanggalDiterima' => 'required|date',
             'nomorSurat' => 'required',
             'pengirim' => 'required',
