@@ -29,3 +29,4 @@ Route::get('surat/masuk/tambah', [SuratMasukController::class, "tambah"])->name(
 Route::post('surat/masuk/tambah', [SuratMasukController::class, "store"]);
 
 Route::get('surat/masuk/keluar', [SuratKeluarController::class, "tambah"])->name("keluar.tambah");
+Route::post('surat/masuk/keluar', [SuratKeluarController::class, "store"]);

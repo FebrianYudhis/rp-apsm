@@ -29,7 +29,7 @@ class SuratMasukController extends Controller
             'berkas' => 'required|file|mimes:pdf'
         ]);
 
-        $dokumen = request()->file('berkas')->store('dokumen');
+        $dokumen = request()->file('berkas')->store('dokumen/masuk');
 
         $masukkan = Incoming::create([
             'nomor_agenda' => request('nomorAgenda'),
