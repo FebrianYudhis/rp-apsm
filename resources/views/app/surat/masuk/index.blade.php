@@ -46,7 +46,15 @@
                 <td>{{ $d['tanggal_surat'] }}</td>
                 <td>{{ $d['perihal'] }}</td>
                 <td>{{ $d['lokasi_berkas'] }}</td>
-                <td><a href="#" class="btn btn-success">Lihat Berkas</a></td>
+                <td>
+                    <div class="row">
+                        <a href="{{ asset('storage').'/'.$d['url'] }}" target="_blank"
+                            class="btn btn-success col-md-12">Lihat
+                            Berkas</a>
+                        <a href="#" class="btn btn-primary col-md-12 mt-1">Edit</a>
+                        <a href="#" class="btn btn-danger col-md-12 mt-1">Hapus</a>
+                    </div>
+                </td>
             </tr>
             @endforeach
         </tbody>

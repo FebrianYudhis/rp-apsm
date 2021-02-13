@@ -42,17 +42,4 @@ class AppController extends Controller
         ];
         return view('app.surat.keluar.index', $data);
     }
-
-    public function masukTambah()
-    {
-        $data = [
-            "judul" => "Tambah Surat Masuk"
-        ];
-        return view('app.surat.masuk.tambah', $data);
-    }
-
-    public function keluarTambah()
-    {
-        dd("Tambah Keluar");
-    }
 }

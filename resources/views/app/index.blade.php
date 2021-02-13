@@ -8,12 +8,14 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="text-muted">Surat Masuk</h5>
-                    <div class="metric-value d-inline-block">
-                        <h1 class="mb-1 text-primary">{{ $suratMasuk }}</h1>
-                    </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Surat Masuk</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1 text-primary">{{ $suratMasuk }}</h1>
+                        </div>
 
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
