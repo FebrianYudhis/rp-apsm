@@ -27,10 +27,10 @@
                 <div class="container-fluid">
                     <div class="row text-center">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept.</a>
+                            <a href="https://github.com/puikinsh/concept">Copyright © 2018 Concept.</a>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Shoutout Febrian Yudhistira
+                            <a href="https://github.com/febrianyudhis">Shoutout Febrian Yudhistira</a>
                         </div>
                     </div>
                 </div>

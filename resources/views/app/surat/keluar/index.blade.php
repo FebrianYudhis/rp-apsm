@@ -44,7 +44,6 @@
     <table id="datatabel" class="table table-responsive-md table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
                 <th>Tanggal Surat</th>
                 <th>Nomor Surat</th>
                 <th>Tujuan</th>
@@ -56,7 +55,6 @@
         <tbody>
             @foreach ($data as $d)
             <tr>
-                <td>{{ $d['id'] }}</td>
                 <td>{{ $d['tanggal_surat'] }}</td>
                 <td>{{ $d['nomor_surat'] }}</td>
                 <td>{{ $d['tujuan'] }}</td>
@@ -67,7 +65,7 @@
                         <a href="{{ asset('storage').'/'.$d['url'] }}" target="_blank"
                             class="btn btn-success col-md-12">Lihat
                             Berkas</a>
-                        <a href="#" class="btn btn-primary col-md-12 mt-1">Edit</a>
+                        <a href="{{ route('keluar.edit',[$d['id']]) }}" class="btn btn-primary col-md-12 mt-1">Edit</a>
                         <form action="{{ route('keluar.hapus',[$d['id']]) }}" class="mt-1 w-100 konfirmasi-hapus"
                             method="POST">
                             @csrf

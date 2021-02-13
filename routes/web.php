@@ -34,4 +34,6 @@ Route::delete('surat/masuk/hapus/{id}', [SuratMasukController::class, "hapus"])-
 
 Route::get('surat/keluar/tambah', [SuratKeluarController::class, "tambah"])->name("keluar.tambah");
 Route::post('surat/keluar/tambah', [SuratKeluarController::class, "store"]);
+Route::get('surat/keluar/edit/{id}', [SuratKeluarController::class, "edit"])->name("keluar.edit");
+Route::post('surat/keluar/edit/{id}', [SuratKeluarController::class, "update"]);
 Route::delete('surat/keluar/hapus/{id}', [SuratKeluarController::class, "hapus"])->name('keluar.hapus');
