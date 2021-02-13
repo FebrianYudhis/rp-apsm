@@ -69,7 +69,7 @@
                         <a href="{{ asset('storage').'/'.$d['url'] }}" target="_blank"
                             class="btn btn-success col-md-12">Lihat
                             Berkas</a>
-                        <a href="#" class="btn btn-primary col-md-12 mt-1">Edit</a>
+                        <a href="{{ route('masuk.edit',[$d['id']]) }}" class="btn btn-primary col-md-12 mt-1">Edit</a>
                         <form action="{{ route('masuk.hapus',[$d['id']]) }}" class="mt-1 w-100 konfirmasi-hapus"
                             method="POST">
                             @csrf
