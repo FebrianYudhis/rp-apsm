@@ -24,6 +24,7 @@ class CreateIncomingsTable extends Migration
             $table->string("lokasi_berkas");
             $table->string("url");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

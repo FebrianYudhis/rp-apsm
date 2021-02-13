@@ -50,4 +50,16 @@ class SuratMasukController extends Controller
             return redirect()->route('surat.masuk');
         }
     }
+
+    public function hapus($id)
+    {
+        $data = Incoming::where('id', $id)->delete();
+        if ($data) {
+            Alert::success('Berhasil', 'Surat Masuk Berhasil Dihapus');
+            return redirect()->route('surat.masuk');
+        } else {
+            Alert::error('Gagal', 'Surat Masuk Gagal Dihapus');
+            return redirect()->route('surat.masuk');
+        }
+    }
 }

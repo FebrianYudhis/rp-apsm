@@ -27,6 +27,8 @@ Route::get('surat/keluar', [AppController::class, "keluar"])->name("surat.keluar
 
 Route::get('surat/masuk/tambah', [SuratMasukController::class, "tambah"])->name("masuk.tambah");
 Route::post('surat/masuk/tambah', [SuratMasukController::class, "store"]);
+Route::delete('surat/masuk/hapus/{id}', [SuratMasukController::class, "hapus"])->name('masuk.hapus');
+
 
 Route::get('surat/masuk/keluar', [SuratKeluarController::class, "tambah"])->name("keluar.tambah");
 Route::post('surat/masuk/keluar', [SuratKeluarController::class, "store"]);
