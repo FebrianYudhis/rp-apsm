@@ -16,7 +16,7 @@ class AppController extends Controller
     public function index()
     {
         $suratMasuk = Incoming::get();
-        $suratKeluar = Incoming::get();
+        $suratKeluar = Outcoming::get();
         $data = [
             "judul" => "Beranda",
             "suratMasuk" => $suratMasuk->count(),
