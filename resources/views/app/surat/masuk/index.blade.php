@@ -11,15 +11,29 @@
 
 @push('js')
 <script>
-    $(document).ready( function () {
-        $('#datatabel').DataTable({
-            "order": [[ 0, "desc" ]]
+    $(document).ready(function () {
+       $('#datatabel').DataTable({
+            paging: true,
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('surat.masuk') }}',
+            columns: [
+                { data: 'nomor_agenda', name: 'nomor_agenda'},
+                { data: 'tanggal_diterima', name: 'tanggal_diterima'},
+                { data: 'nomor_surat', name: 'nomor_surat'},
+                { data: 'pengirim', name: 'pengirim'},
+                { data: 'tanggal_surat', name: 'tanggal_surat'},
+                { data: 'perihal', name: 'perihal'},
+                { data: 'lokasi_berkas', name: 'lokasi_berkas', orderable: false, searchable: false},
+                { data: 'aksi', name: 'aksi', orderable: false, searchable: false},
+            ],
+            order: [[ 0, 'desc' ]]
         });
-    } );
+     });
 </script>
 
 <script>
-    $('.konfirmasi-hapus').click(function(event) {
+    $('#datatabel').on("click",".konfirmasi-hapus",function(event) {
       var form =  $(this).closest("form");
       event.preventDefault();
       swal({
@@ -56,33 +70,7 @@
                 <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($data as $d)
-            <tr>
-                <td class="text-center">{{ $d['nomor_agenda'] }}</td>
-                <td>{{ $d['tanggal_diterima'] }}</td>
-                <td>{{ $d['nomor_surat'] }}</td>
-                <td>{{ $d['pengirim'] }}</td>
-                <td>{{ $d['tanggal_surat'] }}</td>
-                <td>{{ $d['perihal'] }}</td>
-                <td>{{ $d['lokasi_berkas'] }}</td>
-                <td>
-                    <div class="row">
-                        <a href="{{ asset('storage').'/'.$d['url'] }}" target="_blank"
-                            class="btn btn-success col-md-12">Lihat
-                            Berkas</a>
-                        <a href="{{ route('masuk.edit',[$d['id']]) }}" class="btn btn-primary col-md-12 mt-1">Edit</a>
-                        <form action="{{ route('masuk.hapus',[$d['id']]) }}" class="mt-1 w-100 konfirmasi-hapus"
-                            method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger w-100">Hapus</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>
 @endsection
