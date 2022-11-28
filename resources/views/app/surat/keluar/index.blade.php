@@ -11,15 +11,27 @@
 
 @push('js')
 <script>
-    $(document).ready( function () {
-        $('#datatabel').DataTable({
-            "order": [[ 0, "desc" ]]
+    $(document).ready(function () {
+       $('#datatabel').DataTable({
+            paging: true,
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('surat.keluar') }}',
+            columns: [
+                { data: 'tanggal_surat', name: 'tanggal_surat'},
+                { data: 'nomor_surat', name: 'nomor_surat'},
+                { data: 'tujuan', name: 'tujuan'},
+                { data: 'perihal', name: 'perihal'},
+                { data: 'lokasi_berkas', name: 'lokasi_berkas', orderable: false, searchable: false},
+                { data: 'aksi', name: 'aksi', orderable: false, searchable: false},
+            ],
+            order: [[ 0, 'desc' ]]
         });
-    } );
+     });
 </script>
 
 <script>
-    $('.konfirmasi-hapus').click(function(event) {
+    $('#datatabel').on("click",".konfirmasi-hapus",function(event) {
       var form =  $(this).closest("form");
       event.preventDefault();
       swal({
@@ -54,31 +66,7 @@
                 <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($data as $d)
-            <tr>
-                <td>{{ $d['tanggal_surat'] }}</td>
-                <td>{{ $d['nomor_surat'] }}</td>
-                <td>{{ $d['tujuan'] }}</td>
-                <td>{{ $d['perihal'] }}</td>
-                <td>{{ $d['lokasi_berkas'] }}</td>
-                <td>
-                    <div class="row">
-                        <a href="{{ asset('storage').'/'.$d['url'] }}" target="_blank"
-                            class="btn btn-success col-md-12">Lihat
-                            Berkas</a>
-                        <a href="{{ route('keluar.edit',[$d['id']]) }}" class="btn btn-primary col-md-12 mt-1">Edit</a>
-                        <form action="{{ route('keluar.hapus',[$d['id']]) }}" class="mt-1 w-100 konfirmasi-hapus"
-                            method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger w-100">Hapus</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>
 @endsection

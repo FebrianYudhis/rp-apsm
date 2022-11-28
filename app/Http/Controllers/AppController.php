@@ -47,8 +47,19 @@ class AppController extends Controller
         return view('app.surat.masuk.index', $data);
     }
 
-    public function keluar()
+    public function keluar(Request $request)
     {
+        if ($request->ajax()) {
+            $query = Outcoming::where('tahun', Auth::user()->tahun)->orderBy('tanggal_surat', 'desc')->get();
+            return DataTables::of($query)
+                ->addColumn('aksi', function ($data) {
+                    $button = "<a href='" . asset('storage') . '/' . $data['url'] . "' target='_blank' class='btn btn-success col-md-12'>Lihat Berkas</a>";
+                    $button = $button . "<a href='" . route('keluar.edit', [$data['id']]) . "' class='btn btn-primary col-md-12 mt-1'>Edit</a>";
+                    $button = $button . "<form action='" . route('keluar.hapus', [$data['id']]) . "' class='mt-1 w-100 konfirmasi-hapus' method='POST'> " . csrf_field() . method_field('delete') . " <button type='submit' class='btn btn-danger w-100'>Hapus</button></form>";
+                    return $button;
+                })->rawColumns(['aksi'])->toJson();
+        }
+
         $data = [
             "judul" => "List Surat Keluar",
             "data" => Outcoming::where('tahun', Auth::user()->tahun)->get()
