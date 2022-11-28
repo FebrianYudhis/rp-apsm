@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -48,14 +49,14 @@ class LoginController extends Controller
         return view('auth.login', $data);
     }
 
-    public function logout(Request $request)
+    protected function sendFailedLoginResponse(Request $request)
     {
-        $this->guard()->logout();
+        Alert::error('Gagal', 'Username atau Password Salah !');
+        return redirect()->route('login');
+    }
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
+    protected function loggedOut(Request $request)
+    {
         Alert::success('Berhasil', 'Anda Berhasil Keluar');
         return redirect()->route('login');
     }
