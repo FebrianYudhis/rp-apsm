@@ -10,6 +10,16 @@
             @csrf
 
             <div class="form-group">
+                <input class="form-control form-control-lg @error('username') is-invalid @enderror" type="text"
+                    placeholder="Username" name="username" value="{{ old('username') }}">
+                @error('username')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <input class="form-control form-control-lg @error('nama') is-invalid @enderror" type="text"
                     placeholder="Nama" name="nama" value="{{ old('nama') }}">
                 @error('nama')
