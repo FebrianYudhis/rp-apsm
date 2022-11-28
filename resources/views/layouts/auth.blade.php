@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="{{ asset('fonts/circular/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/concept.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/fontawesome-all.css') }}">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
     @stack('css')
 </head>
 

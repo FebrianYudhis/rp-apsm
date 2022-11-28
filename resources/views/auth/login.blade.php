@@ -1,23 +1,5 @@
 @extends('layouts.auth')
 
-@push('css')
-<style>
-    html,
-    body {
-        height: 100%;
-    }
-
-    body {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-</style>
-@endpush
-
 @section('content')
 <div class="splash-container">
     <div class="card">
@@ -32,12 +14,22 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="email" type="email" placeholder="Email"
-                        name="email">
+                    <input class="form-control form-control-lg @error('email') is-invalid @enderror" id="email"
+                        type="email" placeholder="Email" name="email">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="password" type="password" placeholder="Password"
-                        name="password">
+                    <input class="form-control form-control-lg @error('password') is-invalid @enderror" id="password"
+                        type="password" placeholder="Password" name="password">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">
