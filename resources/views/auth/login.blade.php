@@ -14,9 +14,9 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <input class="form-control form-control-lg @error('email') is-invalid @enderror" id="email"
-                        type="email" placeholder="Email" name="email">
-                    @error('email')
+                    <input class="form-control form-control-lg @error('username') is-invalid @enderror" id="username"
+                        type="text" placeholder="Username" name="username">
+                    @error('username')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -30,6 +30,11 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="tahun" required>
+                        <option selected>2022</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">

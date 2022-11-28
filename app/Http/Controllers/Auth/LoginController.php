@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,21 @@ class LoginController extends Controller
             'judul' => "Masuk"
         ];
         return view('auth.login', $data);
+    }
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if (!$request->tahun) {
+            $user->tahun = Carbon::now()->year;
+        } else {
+            $user->tahun = $request->tahun;
+        }
+        $user->save();
     }
 
     protected function sendFailedLoginResponse(Request $request)
