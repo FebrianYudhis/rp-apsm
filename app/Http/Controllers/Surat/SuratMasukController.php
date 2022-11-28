@@ -31,6 +31,12 @@ class SuratMasukController extends Controller
             'berkas' => 'required|file|mimes:pdf'
         ]);
 
+        $cekAgenda = Incoming::where('nomor_agenda', request('nomorAgenda'))->where('tahun', Auth::user()->tahun)->get();
+        if ($cekAgenda->count() > 0) {
+            Alert::error('Gagal', 'Nomor Agenda Sudah Digunakan');
+            return redirect()->route('masuk.tambah');
+        }
+
         $dokumen = request()->file('berkas')->store('dokumen/masuk');
 
         $masukkan = Incoming::create([
@@ -105,6 +111,12 @@ class SuratMasukController extends Controller
             'lokasiBerkas' => 'required',
             'berkas' => 'file|mimes:pdf'
         ]);
+
+        $cekAgenda = Incoming::where('nomor_agenda', request('nomorAgenda'))->where('tahun', Auth::user()->tahun)->get();
+        if ($cekAgenda->count() > 0) {
+            Alert::error('Gagal', 'Nomor Agenda Sudah Digunakan');
+            return redirect()->route('masuk.edit', $id);
+        }
 
         if (request()->file('berkas')) {
             Storage::delete($surat['url']);
