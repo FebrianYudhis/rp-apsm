@@ -16,7 +16,7 @@ class AppController extends Controller
 
     public function index()
     {
-        $suratMasuk = Incoming::get();
+        $suratMasuk = Incoming::where('tahun', Auth::user()->tahun)->get();
         $suratKeluar = Outcoming::where('tahun', Auth::user()->tahun)->get();
         $data = [
             "judul" => "Beranda",
@@ -30,7 +30,7 @@ class AppController extends Controller
     {
         $data = [
             "judul" => "List Surat Masuk",
-            "data" => Incoming::all()
+            "data" => Incoming::where('tahun', Auth::user()->tahun)->get()
         ];
         return view('app.surat.masuk.index', $data);
     }

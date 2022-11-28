@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Surat;
 
 use App\Models\Incoming;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -40,7 +41,8 @@ class SuratMasukController extends Controller
             'tanggal_surat' => request('tanggalSurat'),
             'perihal' => request('perihal'),
             'lokasi_berkas' => request('lokasiBerkas'),
-            'url' => $dokumen
+            'url' => $dokumen,
+            'tahun' => Auth::user()->tahun
         ]);
 
         if ($masukkan) {
@@ -54,7 +56,13 @@ class SuratMasukController extends Controller
 
     public function hapus($id)
     {
-        $data = Incoming::where('id', $id)->delete();
+        $surat = Incoming::find($id);
+        if ($surat->tahun != Auth::user()->tahun) {
+            Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
+            return redirect()->route('surat.masuk');
+        }
+
+        $data = $surat->delete();
         if ($data) {
             Alert::success('Berhasil', 'Surat Masuk Berhasil Dihapus');
             return redirect()->route('surat.masuk');
@@ -66,7 +74,12 @@ class SuratMasukController extends Controller
 
     public function edit($id)
     {
-        $surat = Incoming::where('id', $id)->first();
+        $surat = Incoming::find($id);
+        if ($surat->tahun != Auth::user()->tahun) {
+            Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
+            return redirect()->route('surat.masuk');
+        }
+
         $data = [
             "judul" => "Edit Surat Masuk",
             "data" => $surat
@@ -76,7 +89,11 @@ class SuratMasukController extends Controller
 
     public function update($id)
     {
-        $surat = Incoming::where('id', $id)->first();
+        $surat = Incoming::find($id);
+        if ($surat->tahun != Auth::user()->tahun) {
+            Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
+            return redirect()->route('surat.masuk');
+        }
 
         request()->validate([
             'nomorAgenda' => 'required',

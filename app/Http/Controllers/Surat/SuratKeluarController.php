@@ -58,7 +58,8 @@ class SuratKeluarController extends Controller
             Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
             return redirect()->route('surat.keluar');
         }
-        $data = Outcoming::where('id', $id)->delete();
+
+        $data = $surat->delete();
         if ($data) {
             Alert::success('Berhasil', 'Surat Keluar Berhasil Dihapus');
             return redirect()->route('surat.keluar');
@@ -75,7 +76,7 @@ class SuratKeluarController extends Controller
             Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
             return redirect()->route('surat.keluar');
         }
-        $surat = Outcoming::where('id', $id)->first();
+
         $data = [
             "judul" => "Edit Surat Keluar",
             "data" => $surat
@@ -90,7 +91,7 @@ class SuratKeluarController extends Controller
             Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
             return redirect()->route('surat.keluar');
         }
-        $surat = Outcoming::where('id', $id)->first();
+
         request()->validate([
             'tanggalSurat' => 'required|date',
             'nomorSurat' => 'required',
