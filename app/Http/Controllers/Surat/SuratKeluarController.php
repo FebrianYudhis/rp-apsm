@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Surat;
 
 use App\Models\Outcoming;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -37,7 +38,8 @@ class SuratKeluarController extends Controller
             'tujuan' => request('tujuan'),
             'perihal' => request('perihal'),
             'lokasi_berkas' => request('lokasiBerkas'),
-            'url' => $dokumen
+            'url' => $dokumen,
+            'tahun' => Auth::user()->tahun,
         ]);
 
         if ($masukkan) {
@@ -51,6 +53,11 @@ class SuratKeluarController extends Controller
 
     public function hapus($id)
     {
+        $surat = Outcoming::find($id);
+        if ($surat->tahun != Auth::user()->tahun) {
+            Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
+            return redirect()->route('surat.keluar');
+        }
         $data = Outcoming::where('id', $id)->delete();
         if ($data) {
             Alert::success('Berhasil', 'Surat Keluar Berhasil Dihapus');
@@ -63,6 +70,11 @@ class SuratKeluarController extends Controller
 
     public function edit($id)
     {
+        $surat = Outcoming::find($id);
+        if ($surat->tahun != Auth::user()->tahun) {
+            Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
+            return redirect()->route('surat.keluar');
+        }
         $surat = Outcoming::where('id', $id)->first();
         $data = [
             "judul" => "Edit Surat Keluar",
@@ -73,6 +85,11 @@ class SuratKeluarController extends Controller
 
     public function update($id)
     {
+        $surat = Outcoming::find($id);
+        if ($surat->tahun != Auth::user()->tahun) {
+            Alert::error('Gagal', 'Anda Tidak Memiliki Akses');
+            return redirect()->route('surat.keluar');
+        }
         $surat = Outcoming::where('id', $id)->first();
         request()->validate([
             'tanggalSurat' => 'required|date',

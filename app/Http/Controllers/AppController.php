@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Incoming;
 use App\Models\Outcoming;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
@@ -16,7 +17,7 @@ class AppController extends Controller
     public function index()
     {
         $suratMasuk = Incoming::get();
-        $suratKeluar = Outcoming::get();
+        $suratKeluar = Outcoming::where('tahun', Auth::user()->tahun)->get();
         $data = [
             "judul" => "Beranda",
             "suratMasuk" => $suratMasuk->count(),
@@ -38,7 +39,7 @@ class AppController extends Controller
     {
         $data = [
             "judul" => "List Surat Keluar",
-            "data" => Outcoming::all()
+            "data" => Outcoming::where('tahun', Auth::user()->tahun)->get()
         ];
         return view('app.surat.keluar.index', $data);
     }

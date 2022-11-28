@@ -21,6 +21,7 @@ class CreateOutcomingsTable extends Migration
             $table->text("perihal");
             $table->string("lokasi_berkas");
             $table->string("url");
+            $table->integer("tahun");
             $table->timestamps();
             $table->softDeletes();
         });
