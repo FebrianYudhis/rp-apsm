@@ -113,7 +113,7 @@ class SuratMasukController extends Controller
         ]);
 
         $cekAgenda = Incoming::where('nomor_agenda', request('nomorAgenda'))->where('tahun', Auth::user()->tahun)->get();
-        if ($cekAgenda->count() > 0) {
+        if ($cekAgenda->count() > 0 and $cekAgenda->first()->id != $id) {
             Alert::error('Gagal', 'Nomor Agenda Sudah Digunakan');
             return redirect()->route('masuk.edit', $id);
         }
