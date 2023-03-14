@@ -24,13 +24,13 @@ Route::get('app', [AppController::class, "index"]);
 
 Route::get('surat/masuk', [AppController::class, "masuk"])->name("surat.masuk");
 Route::get('surat/keluar', [AppController::class, "keluar"])->name("surat.keluar");
+Route::get('surat/digital', [AppController::class, "digital"])->name("surat.digital");
 
 Route::get('surat/masuk/tambah', [SuratMasukController::class, "tambah"])->name("masuk.tambah");
 Route::post('surat/masuk/tambah', [SuratMasukController::class, "store"]);
 Route::get('surat/masuk/edit/{id}', [SuratMasukController::class, "edit"])->name('masuk.edit');
 Route::post('surat/masuk/edit/{id}', [SuratMasukController::class, "update"]);
 Route::delete('surat/masuk/hapus/{id}', [SuratMasukController::class, "hapus"])->name('masuk.hapus');
-
 
 Route::get('surat/keluar/tambah', [SuratKeluarController::class, "tambah"])->name("keluar.tambah");
 Route::post('surat/keluar/tambah', [SuratKeluarController::class, "store"]);

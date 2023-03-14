@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Incoming;
-use App\Models\Outcoming;
+use App\Models\{Incoming, Outcoming};
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -65,5 +64,10 @@ class AppController extends Controller
             "data" => Outcoming::where('tahun', Auth::user()->tahun)->get()
         ];
         return view('app.surat.keluar.index', $data);
+    }
+
+    public function digital(Request $request)
+    {
+        echo 'Hello World';
     }
 }
