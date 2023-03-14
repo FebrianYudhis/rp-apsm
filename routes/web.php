@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Surat\{SuratKeluarController, SuratMasukController};
+use App\Http\Controllers\Surat\{SuratDigitalController, SuratKeluarController, SuratMasukController};
 
 Route::get('/', [LoginController::class, "showLoginForm"]);
 
@@ -37,3 +37,9 @@ Route::post('surat/keluar/tambah', [SuratKeluarController::class, "store"]);
 Route::get('surat/keluar/edit/{id}', [SuratKeluarController::class, "edit"])->name("keluar.edit");
 Route::post('surat/keluar/edit/{id}', [SuratKeluarController::class, "update"]);
 Route::delete('surat/keluar/hapus/{id}', [SuratKeluarController::class, "hapus"])->name('keluar.hapus');
+
+Route::get('surat/digital/tambah', [SuratDigitalController::class, "tambah"])->name("digital.tambah");
+Route::post('surat/digital/tambah', [SuratDigitalController::class, "store"]);
+Route::get('surat/digital/edit/{id}', [SuratDigitalController::class, "edit"])->name("digital.edit");
+Route::post('surat/digital/edit/{id}', [SuratDigitalController::class, "update"]);
+Route::delete('surat/digital/hapus/{id}', [SuratDigitalController::class, "hapus"])->name('digital.hapus');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Incoming, Outcoming};
+use App\Models\{Digital, Incoming, Outcoming};
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +68,21 @@ class AppController extends Controller
 
     public function digital(Request $request)
     {
-        echo 'Hello World';
+        if ($request->ajax()) {
+            $query = Digital::all();
+            return DataTables::of($query)
+                ->addColumn('aksi', function ($data) {
+                    $button = "<a href='" . asset('storage') . '/' . $data['url'] . "' target='_blank' class='btn btn-success col-md-12'>Lihat Berkas</a>";
+                    $button = $button . "<a href='" . route('digital.edit', [$data['id']]) . "' class='btn btn-primary col-md-12 mt-1'>Edit</a>";
+                    $button = $button . "<form action='" . route('digital.hapus', [$data['id']]) . "' class='mt-1 w-100 konfirmasi-hapus' method='POST'> " . csrf_field() . method_field('delete') . " <button type='submit' class='btn btn-danger w-100'>Hapus</button></form>";
+                    return $button;
+                })->rawColumns(['aksi'])->toJson();
+        }
+
+        $data = [
+            "judul" => "List Surat Digital",
+            "data" => Digital::all()
+        ];
+        return view('app.surat.digital.index', $data);
     }
 }
