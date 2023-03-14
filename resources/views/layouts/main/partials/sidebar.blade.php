@@ -32,7 +32,7 @@
                         Akun
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/app') }}" class="nav-link"><i class="fa fa-fw fa-power-off"></i>Keluar</a>
+                        <a href="{{ route('logout') }}" class="nav-link"><i class="fa fa-fw fa-power-off"></i>Keluar</a>
                     </li>
                 </ul>
             </div>
