@@ -10,3 +10,6 @@
 - Menambahkan Route Untuk Menu Guest
 - Menambahkan Layouts Guest
 - Menambahkan Beranda Menu Guest
+
+#1.2.1
+- Menghapus Tracking Pada File "composer.lock"
