@@ -17,3 +17,6 @@
 #1.3.0
 - Menambahkan Factory Surat Masuk, Surat Keluar, dan Surat Digital
 - Mengubah Locale Faker Menjadi Indonesia
+
+#1.4.0
+- Menyelesaikan Surat Masuk Menu Guest
