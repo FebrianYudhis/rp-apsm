@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Surat\{SuratDigitalController, SuratKeluarController, SuratMasukController};
 
@@ -46,3 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::post('surat/digital/edit/{id}', [SuratDigitalController::class, "update"]);
     Route::delete('surat/digital/hapus/{id}', [SuratDigitalController::class, "hapus"])->name('digital.hapus');
 });
+
+Route::get('guest', [GuestController::class, "index"])->name("guest");
+Route::get('guest/masuk', [GuestController::class, 'masuk'])->name("guest.masuk");
+Route::get('guest/keluar', [GuestController::class, 'keluar'])->name("guest.keluar");
+Route::get('guest/digital', [GuestController::class, 'digital'])->name("guest.digital");

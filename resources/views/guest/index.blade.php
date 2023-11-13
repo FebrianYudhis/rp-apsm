@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.guest')
 
 @section('konten')
     <div class="card text-center">

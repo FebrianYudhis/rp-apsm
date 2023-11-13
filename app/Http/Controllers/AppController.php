@@ -17,7 +17,8 @@ class AppController extends Controller
         $data = [
             "judul" => "Beranda",
             "suratMasuk" => $suratMasuk->count(),
-            "suratKeluar" => $suratKeluar->count()
+            "suratKeluar" => $suratKeluar->count(),
+            "suratDigital" => Digital::count(),
         ];
         return view('app.index', $data);
     }
