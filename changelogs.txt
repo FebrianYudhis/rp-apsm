@@ -13,3 +13,7 @@
 
 #1.2.1
 - Menghapus Tracking Pada File "composer.lock"
+
+#1.3.0
+- Menambahkan Factory Surat Masuk, Surat Keluar, dan Surat Digital
+- Mengubah Locale Faker Menjadi Indonesia
