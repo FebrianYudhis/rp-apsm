@@ -27,13 +27,13 @@ class GuestController extends Controller
             if ($data == null || $data == "") {
                 return null;
             } else {
-                return Incoming::where('nomor_surat', 'LIKE', '%' . $data . '%')->orwhere('pengirim', 'LIKE', '%' . $data . '%')->orwhere('perihal', 'LIKE', '%' . $data . '%')->orderBy('nomor_agenda', 'desc')->get();
+                return Incoming::where('nomor_surat', 'LIKE', '%' . $data . '%')->orwhere('pengirim', 'LIKE', '%' . $data . '%')->orwhere('perihal', 'LIKE', '%' . $data . '%')->orderBy('tahun', 'desc')->orderBy('nomor_agenda', 'desc')->get();
             }
         }
 
         $data = [
             "judul" => "List Surat Masuk",
-            "suratMasuk" => Incoming::orderBy('nomor_agenda', 'desc')->paginate(10)
+            "suratMasuk" => Incoming::orderBy('tahun', 'desc')->orderBy('nomor_agenda', 'desc')->paginate(10)
         ];
         return view('guest.masuk', $data);
     }

@@ -83,7 +83,8 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header d-flex">
-                            <h4 class="card-header-title">{{ $data->pengirim }} ({{ $data->nomor_agenda }})</h4>
+                            <h4 class="card-header-title">{{ $data->pengirim }} ({{ $data->tahun }} ||
+                                {{ $data->nomor_agenda }})</h4>
                             <div class="toolbar ml-auto">
                                 <a href="{{ asset('storage') . '/' . $data->url }}" class="btn btn-primary btn-sm"
                                     target="_blank">Lihat</a>

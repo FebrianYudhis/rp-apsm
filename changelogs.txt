@@ -20,3 +20,7 @@
 
 #1.4.0
 - Menyelesaikan Surat Masuk Menu Guest
+
+#1.4.1
+- Memperbaiki OrderBy Surat Masuk Menu Guest
+- Menambahkan Informasi Tahun Pada Surat Masuk Menu Guest
