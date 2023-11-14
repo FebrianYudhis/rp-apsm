@@ -56,8 +56,21 @@ class GuestController extends Controller
         return view('guest.keluar', $data);
     }
 
-    public function digital()
+    public function digital(Request $request)
     {
+        if ($request->ajax()) {
+            $data = $request->get('pencarian');
+            if ($data == null || $data == "") {
+                return null;
+            } else {
+                return Digital::where('perihal', 'LIKE', '%' . $data . '%')->get();
+            }
+        }
 
+        $data = [
+            "judul" => "List Surat Digital",
+            "suratDigital" => Digital::paginate(10)
+        ];
+        return view('guest.digital', $data);
     }
 }
