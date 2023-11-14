@@ -55,6 +55,10 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/') }}" class="nav-link"><i
+                                        class="fa fa-fw fa-arrow-circle-left"></i>Kembali</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
