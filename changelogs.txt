@@ -27,3 +27,6 @@
 
 #1.4.2
 - Menambahkan Navigasi Ke Menu Guest
+
+#1.4.3
+- Memperbaiki Kode Layouts Menu Admin
