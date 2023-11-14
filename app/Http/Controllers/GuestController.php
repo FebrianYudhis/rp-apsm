@@ -38,9 +38,22 @@ class GuestController extends Controller
         return view('guest.masuk', $data);
     }
 
-    public function keluar()
+    public function keluar(Request $request)
     {
+        if ($request->ajax()) {
+            $data = $request->get('pencarian');
+            if ($data == null || $data == "") {
+                return null;
+            } else {
+                return Outcoming::where('nomor_surat', 'LIKE', '%' . $data . '%')->orwhere('tujuan', 'LIKE', '%' . $data . '%')->orwhere('perihal', 'LIKE', '%' . $data . '%')->orderBy('tahun', 'desc')->orderBy('tanggal_surat', 'desc')->get();
+            }
+        }
 
+        $data = [
+            "judul" => "List Surat Keluar",
+            "suratKeluar" => Outcoming::orderBy('tahun', 'desc')->orderBy('tanggal_surat', 'desc')->paginate(10)
+        ];
+        return view('guest.keluar', $data);
     }
 
     public function digital()

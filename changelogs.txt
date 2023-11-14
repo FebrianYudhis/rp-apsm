@@ -30,3 +30,6 @@
 
 #1.4.3
 - Memperbaiki Kode Layouts Menu Admin
+
+#1.5.0
+- Menyelesaikan Surat Keluar Menu Guest
