@@ -36,3 +36,6 @@
 
 #1.6.0
 - Menyelesaikan Surat Digital Menu Guest
+
+#1.6.1
+- Memperbaiki Kolom "Tanggal Surat" Pada Surat Masuk Agar Bisa Nullable

@@ -19,7 +19,7 @@ class CreateIncomingsTable extends Migration
             $table->date("tanggal_diterima");
             $table->string("nomor_surat");
             $table->text("pengirim");
-            $table->date("tanggal_surat");
+            $table->date("tanggal_surat")->nullable();
             $table->text("perihal");
             $table->string("lokasi_berkas");
             $table->string("url");

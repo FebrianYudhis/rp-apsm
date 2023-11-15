@@ -25,7 +25,6 @@ class SuratMasukController extends Controller
             'tanggalDiterima' => 'required|date',
             'nomorSurat' => 'required',
             'pengirim' => 'required',
-            'tanggalSurat' => 'required|date',
             'perihal' => 'required',
             'lokasiBerkas' => 'required',
             'berkas' => 'required|file|mimes:pdf'
@@ -106,7 +105,6 @@ class SuratMasukController extends Controller
             'tanggalDiterima' => 'required|date',
             'nomorSurat' => 'required',
             'pengirim' => 'required',
-            'tanggalSurat' => 'required|date',
             'perihal' => 'required',
             'lokasiBerkas' => 'required',
             'berkas' => 'file|mimes:pdf'
